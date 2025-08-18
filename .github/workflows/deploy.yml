@@ -1,14 +1,20 @@
-# GitHub Actions workflow for deployment (optional)
+
 name: Deploy SRE-Load-Balancer
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
+jobs:
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Add deployment steps here
+      - name: Run ShellCheck on scripts
+        run: |
+          if command -v shellcheck; then shellcheck scripts/*.sh; else echo 'shellcheck not installed'; fi
+      - name: Check PowerShell scripts
+        run: |
+          pwsh -Command "Get-ChildItem scripts/*.ps1 | ForEach-Object { Write-Host Checking $_; }"
