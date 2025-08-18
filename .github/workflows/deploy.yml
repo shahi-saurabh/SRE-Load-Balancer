@@ -1,7 +1,5 @@
 name: Deploy SRE-Load-Balancer
 
-name: Deploy SRE-Load-Balancer
-
 on:
   pull_request:
     branches:
