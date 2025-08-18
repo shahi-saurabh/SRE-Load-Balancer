@@ -1,0 +1,4 @@
+#cloud-config
+# Cloud-init configuration for NGINX setup on VMSS instances
+
+# ...add cloud-init config here...
